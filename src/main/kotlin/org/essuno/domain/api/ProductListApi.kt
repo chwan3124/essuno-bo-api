@@ -1,4 +1,4 @@
-package org.essuno.product.api
+package org.essuno.domain.api
 
 import org.springframework.web.bind.annotation.RestController
 
