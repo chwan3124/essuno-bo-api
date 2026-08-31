@@ -1,7 +1,6 @@
 package org.essuno.global.security
 
 import org.essuno.global.auth.jwt.JwtAuthenticationFilter
-import org.hibernate.internal.util.collections.CollectionHelper.listOf
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
