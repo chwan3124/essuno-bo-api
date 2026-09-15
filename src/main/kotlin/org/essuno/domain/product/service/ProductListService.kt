@@ -16,7 +16,7 @@ class ProductListService(
             ProductResponse(
                 id = product.id,
                 name = product.name,
-                category = product.category,
+                category = product.category.name,
                 price = product.price,
                 stock = product.stock,
                 status =product.status,

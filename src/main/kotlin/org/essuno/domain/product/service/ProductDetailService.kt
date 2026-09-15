@@ -1,6 +1,7 @@
 package org.essuno.domain.product.service
 
 import org.essuno.domain.product.dto.ProductResponse
+import org.essuno.domain.product.enum.ProductCategory
 import org.essuno.domain.product.repository.ProductRepository
 import org.springframework.stereotype.Service
 
@@ -15,7 +16,7 @@ class ProductDetailService(
         return ProductResponse(
                 id = product.id,
                 name = product.name,
-                category = product.category,
+                category = "",
                 price = product.price,
                 stock = product.stock,
                 status =product.status,
