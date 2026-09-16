@@ -2,7 +2,7 @@ package org.essuno.domain.product.dto
 
 import java.util.Date
 
-data class ProductResponse(
+data class ProductItem(
     val id: Long? = null,
     var name: String = "",
     var category: String = "",

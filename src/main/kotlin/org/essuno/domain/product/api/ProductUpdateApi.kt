@@ -1,6 +1,5 @@
 package org.essuno.domain.product.api
 
-import org.essuno.domain.product.dto.ProductResponse
 import org.essuno.domain.product.dto.ProductUpdateRequest
 import org.essuno.domain.product.service.ProductUpdateService
 import org.essuno.global.response.ApiResponse
