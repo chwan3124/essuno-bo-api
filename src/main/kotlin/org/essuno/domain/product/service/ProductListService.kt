@@ -18,7 +18,7 @@ class ProductListService(
             ProductItem(
                 id = product.id,
                 name = product.name,
-                category = product.category.name,
+                categoryId = product.category.id,
                 price = product.price,
                 stock = product.stock,
                 status =product.status,

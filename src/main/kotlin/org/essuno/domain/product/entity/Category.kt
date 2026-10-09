@@ -20,4 +20,7 @@ class Category {
 
     @Column(name="name", nullable = false, length = 100)
     var name: String = ""
+
+    @Column(name="parent_id")
+    var parentId: Long? = null
 }

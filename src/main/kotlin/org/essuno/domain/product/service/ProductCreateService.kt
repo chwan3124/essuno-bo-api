@@ -19,7 +19,7 @@ class ProductCreateService(
 
     @Transactional
     fun createProduct(request: ProductUpdateRequest): Unit {
-        val category = categoryRepository.findById(request.category.toLong())
+        val category = categoryRepository.findById(request.categoryId)
             .orElseThrow { IllegalArgumentException("존재하지 않는 카테고리입니다.") }
 
         val product = Product()
