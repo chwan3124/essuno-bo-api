@@ -26,6 +26,7 @@ class ProductUpdateService(
         product.category = category
         product.price = request.price
         product.stock = request.stock
+        product.status = request.status
 
         productRepository.save(product)
     }

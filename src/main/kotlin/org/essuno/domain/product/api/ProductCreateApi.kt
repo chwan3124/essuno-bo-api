@@ -1,5 +1,6 @@
 package org.essuno.domain.product.api
 
+import org.essuno.domain.product.dto.ProductCreateRequest
 import org.essuno.domain.product.dto.ProductUpdateRequest
 import org.essuno.domain.product.service.ProductCreateService
 import org.essuno.global.response.ApiResponse
@@ -15,7 +16,7 @@ class ProductCreateApi(
 ) {
 
     @PostMapping("/product")
-    fun updateProduct(@RequestBody request: ProductUpdateRequest): ApiResponse<Unit> {
+    fun createProduct(@RequestBody request: ProductCreateRequest): ApiResponse<Unit> {
         productCreateService.createProduct(request)
         return ApiResponse.success()
     }
