@@ -10,5 +10,6 @@ data class ProductItem(
     var price: Int = 0,
     var stock: Int = 0,
     var status:  String = "",
+    var options: List<ProductOptionItem>? = null,
     var createdAt: Date? = null
 )
