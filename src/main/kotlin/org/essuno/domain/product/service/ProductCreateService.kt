@@ -2,10 +2,13 @@ package org.essuno.domain.product.service
 
 import jakarta.transaction.Transactional
 import org.essuno.domain.product.dto.ProductCreateRequest
+import org.essuno.domain.product.dto.ProductOptionItem
 import org.essuno.domain.product.dto.ProductUpdateRequest
 import org.essuno.domain.product.entity.Product
+import org.essuno.domain.product.entity.ProductOption
 import org.essuno.domain.product.enum.ProductCategory
 import org.essuno.domain.product.repository.CategoryRepository
+import org.essuno.domain.product.repository.ProductOptionRepository
 import org.essuno.domain.product.repository.ProductRepository
 import org.essuno.global.response.ApiResponse
 import org.springframework.stereotype.Service
@@ -15,7 +18,8 @@ import java.util.Date
 @Service
 class ProductCreateService(
     private val productRepository: ProductRepository,
-    private val categoryRepository: CategoryRepository
+    private val categoryRepository: CategoryRepository,
+    private val productOptionRepository: ProductOptionRepository
 ) {
 
     @Transactional
@@ -31,5 +35,35 @@ class ProductCreateService(
         product.status = request.status
         product.createdAt = Date.from(Instant.now())
         productRepository.save(product)
+
+        if(request.options.isNotEmpty()) {
+            request.options.forEach { option ->
+                if(option.id == null){
+                    createOption(product, option)
+                    return@forEach
+                }
+                val optionItem = productOptionRepository.findById(option.id).orElse(null)
+                if(optionItem != null) {
+                    optionItem.name = option.name
+                    optionItem.price = option.price
+                    optionItem.stock = option.stock
+                    optionItem.size = option.size
+                    productOptionRepository.save(optionItem)
+                } else {
+                    createOption(product, option)
+                }
+
+            }
+        }
+    }
+
+    fun createOption(product: Product, option: ProductOptionItem): Unit {
+        val newOption = ProductOption()
+        newOption.name = option.name
+        newOption.price = option.price
+        newOption.stock = option.stock
+        newOption.size = option.size
+        newOption.product = product
+        productOptionRepository.save(newOption)
     }
 }

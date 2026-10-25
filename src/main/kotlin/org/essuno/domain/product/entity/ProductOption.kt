@@ -24,7 +24,7 @@ class ProductOption {
     @Column(name="name", nullable = false, length = 100)
     var name: String = ""
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "product_id", nullable = false)
     lateinit var product: Product
 
